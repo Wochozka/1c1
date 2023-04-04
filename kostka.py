@@ -21,11 +21,13 @@ class Kostka:
   
   def getPocetSten(self):
     return self.__pocetSten
-
+  
 def main():
   k = Kostka(12)
   print(k)
   print(k.getPocetSten())
+  print(k)
+
 
 
 if __name__=="__main__":
