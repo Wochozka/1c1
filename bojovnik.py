@@ -26,12 +26,17 @@ class Bojovnik:
     def obrana(self, uder):
         obrana = self.__obrana + self.__kostka.hod()
         zraneni = uder - obrana
-        self.setZprava("{self} utrpel zraneni o sile {zraneni}.")
+        zprava = f"{self.__jmeno} utrpel zraneni o sile {zraneni}."
         if zraneni < 0:
             zraneni = 0
-            self.setZprava("{self} zcela odrazil utok.")
+            zprava = f"{self.__jmeno} zcela odrazil utok."
         self.__zivot = self.__zivot - zraneni
-        
+        if self.__zivot <= 0:
+            self.__zivot = 0
+            zprava = zprava[:-1] + " a zemrel."
+        self.setZprava(zprava)
+
+
     
     def grafickyZivot(self):
         celkem = 20
