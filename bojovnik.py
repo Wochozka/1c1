@@ -14,6 +14,7 @@ class Bojovnik:
         self.__utok = utok
         self.__obrana = obrana
         self.__kostka = kostka
+        self._zprava = ""
 
     def __str__(self):
         return f"Bojovnik jmenem {self.__jmeno}."
@@ -25,9 +26,12 @@ class Bojovnik:
     def obrana(self, uder):
         obrana = self.__obrana + self.__kostka.hod()
         zraneni = uder - obrana
+        self.setZprava("{self} utrpel zraneni o sile {zraneni}.")
         if zraneni < 0:
             zraneni = 0
+            self.setZprava("{self} zcela odrazil utok.")
         self.__zivot = self.__zivot - zraneni
+        
     
     def grafickyZivot(self):
         celkem = 20
@@ -37,6 +41,12 @@ class Bojovnik:
     @property
     def nazivu(self):
         return self.__zivot > 0
+    
+    def setZprava(self, zprava):
+        self._zprava = zprava
+    
+    def getZprava(self):
+        return self._zprava
 
 
 def main():
